@@ -50,10 +50,19 @@ public class MainActivity extends Activity
         {
             // Create an Intent to launch the MapChooseActivity
             Intent intent = new Intent (this, MapChooseActivity.class);
+            startActivityForResult(intent,0);
 
             return true;
         }
-        else
+        if (item.getItemId() == R.id.setlocation)
+        {
+            // Create an Intent to launch the MapChooseActivity
+            Intent intent = new Intent (this, SetLocationActivity.class);
+            startActivityForResult(intent,1);
+
+            return true;
+        }
+
         return false;
     }
 
