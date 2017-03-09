@@ -2,6 +2,7 @@ package com.example.whitelegg_n.osmdroid1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -99,6 +100,20 @@ public class MainActivity extends Activity {
                 }
             }
         }
+    }
+    public void onStart()
+    {
+        super.onStart();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        double lat = Double.parseDouble ( prefs.getString("lat", "50.9") );
+        double lon = Double.parseDouble ( prefs.getString("lon", "-1.4") );
+        int zoom = Integer.parseInt( prefs.getString("zoom", "14") );
+
+        mv.getController().setZoom(zoom);
+        mv.getController().setCenter(new GeoPoint (lat,lon));
+
+
+
     }
 
 }
