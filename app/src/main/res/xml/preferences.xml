@@ -15,4 +15,11 @@
         android:defaultValue="14"
         android:title="Zoom level"
         android:summary="Zoom level for the map." />
+
+    <ListPreference
+        android:key="map"
+        android:title=""
+        android:summary="Choose your map view."
+        android:entries="@array/mapStyle"
+        android:entryValues="@array/mapStyleCodes"
 </PreferenceScreen>
