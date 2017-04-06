@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     MapView mv;
+    ItemizedIconOverlay<OverlayItem> items;
+    ItemizedIconOverlay.OnItemGestureListener<OverlayItem> markerGestureListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +36,28 @@ public class MainActivity extends Activity {
         mv.getController().setZoom(14);
         mv.getController().setCenter(new GeoPoint(40.1, 22.5));
 
+        markerGestureListener = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+
+            public boolean onItemSingleTapUp(int i, OverlayItem item) {
+                Toast.makeText(MainActivity.this, item.getSnippet(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            public boolean onItemLongPress(int index, OverlayItem item) {
+                Toast.makeText(MainActivity.this, item.getSnippet(), Toast.LENGTH_LONG);
+                return true;
+            }
+        };
+
         items = new ItemizedIconOverlay<OverlayItem>(this, new ArrayList<OverlayItem>(), null);
-        OverlayItem 
+        OverlayItem ocean_village = new OverlayItem("Ocean Village", " Village by the ocean", new GeoPoint(50.8973, 1.3896));
+
+        ocean_village.setMarker(getResources().getDrawable(R.drawable.marker));
+        items.addItem(ocean_village);
+        mv.getOverlays().add(items);
     }
+
+
 
     // onCreateOptionsMenu()
     // Runs automatically on startup, loads the menu XML file into a Menu object.
