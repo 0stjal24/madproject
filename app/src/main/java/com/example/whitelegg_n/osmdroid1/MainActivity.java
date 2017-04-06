@@ -13,6 +13,10 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.OverlayItem;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     MapView mv;
@@ -28,6 +32,9 @@ public class MainActivity extends Activity {
         mv = (MapView) findViewById(R.id.map1);
         mv.getController().setZoom(14);
         mv.getController().setCenter(new GeoPoint(40.1, 22.5));
+
+        items = new ItemizedIconOverlay<OverlayItem>(this, new ArrayList<OverlayItem>(), null);
+        OverlayItem 
     }
 
     // onCreateOptionsMenu()
