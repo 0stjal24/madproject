@@ -50,9 +50,9 @@ public class MainActivity extends Activity {
         };
 
         items = new ItemizedIconOverlay<OverlayItem>(this, new ArrayList<OverlayItem>(), null);
-        OverlayItem ocean_village = new OverlayItem("Ocean Village", " Village by the ocean", new GeoPoint(50.8973, 1.3896));
+        OverlayItem ocean_village = new OverlayItem("Ocean Village", " Village by the ocean", new GeoPoint(50.8973, -1.3896));
 
-        ocean_village.setMarker(getResources().getDrawable(R.drawable.marker));
+      //  ocean_village.setMarker(getResources().getDrawable(R.drawable.marker));
         items.addItem(ocean_village);
         mv.getOverlays().add(items);
     }
